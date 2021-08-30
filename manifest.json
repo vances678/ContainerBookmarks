@@ -1,0 +1,28 @@
+{
+    "name": "Container Bookmarks",
+    "description": "Open bookmarks in multi-account containers",
+    "version": "1.0",
+    "manifest_version": 2,
+
+    "author": "Vance Spears",
+    "homepage_url": "https://github.com/vances678/ContainerBookmarks",
+
+    "permissions": [
+        "tabs",
+        "menus",
+        "contextMenus",
+        "bookmarks",
+        "contextualIdentities",
+        "cookies"
+    ],
+
+    "protocol_handlers": [{
+        "protocol": "ext+cntnrbkmrk",
+        "name": "Container Bookmarks",
+        "uriTemplate": "/handler.html#%s"
+    }],
+
+    "background": {
+        "scripts": ["background.js"]
+    }
+  }

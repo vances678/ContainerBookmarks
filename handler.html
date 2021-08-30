@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Container Bookmarks</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">    
+    <link rel="stylesheet" href="chrome://browser/skin/error-pages.css">
+    <style>
+        .title {
+            background-image: url("chrome://global/skin/icons/error.svg");
+            background-position: left center;
+            font-size: inherit;
+        }
+        #errorText {
+            font-weight: bold;
+            display: block;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="errorContainer">
+        <div class="title">
+            <h1>Well that didn't work...</h1>
+        </div>
+
+        <div class="description">
+            <p>There was a problem opening the provided URL. Please check your spelling and try again. If the issue doesn't go away, please <a href="https://github.com/vances678/ContainerBookmarks/issues">create an issue</a>.</p>
+            <p id="errorText"></p>
+        </div>
+    </div>
+    
+    <script src="handler.js"></script>
+</body>
+
+</html>
