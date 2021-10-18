@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assign Image to Bookmark</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">    
+    <link rel="stylesheet" href="chrome://browser/skin/error-pages.css">
+    <style>
+        .title {
+            background-image: url("chrome://global/skin/icons/error.svg");
+            background-position: left center;
+            font-size: inherit;
+        }
+        .form {
+            display: block;
+            text-align: center;
+        }
+        .textbox {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div id="errorContainer">
+        <div class="title">
+            <h2 id = "title">Please enter image URL for bookmark</h2>
+        </div>
+        <form class="form">
+            <input class = "textbox" id = "textbox" type = "text" name = "textbox" value = "">
+            <input id = "button" type = "button" name = "button" value = "Assign Image"> 
+        </form>
+    </div>
+    <script src = "assign_image.js"></script>
+</body>
+</html>
