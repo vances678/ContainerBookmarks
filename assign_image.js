@@ -33,7 +33,7 @@ function handleMessage(message) {
     if (messageReceived == false) {
         messageReceived = true
         const title = document.getElementById("title")
-        title.innerHTML = title.innerHTML + ` (${message.bookmarkName}):`
+        title.textContent = title.textContent + ` (${message.bookmarkName}):`
         bookmarkId = message.bookmarkId
         bookmarkURL = message.bookmarkURL
     }

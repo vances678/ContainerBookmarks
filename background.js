@@ -10,9 +10,7 @@ browser.menus.onClicked.addListener(async (info) => {
     let bookmarks = await browser.bookmarks.get(info.bookmarkId)
     if (bookmarks[0].type === "folder") {
         bookmarks = await browser.bookmarks.getChildren(info.bookmarkId)
-        if (info.menuItemId == "assign_image") {
-            for (index in bookmarks) { assignImage(bookmarks[index]) }
-        } else if (info.menuItemId == "remove_image") {
+        if (info.menuItemId == "remove_image") {
             for (index in bookmarks) { removeImage(bookmarks[index]) }
         } else {
             for (index in bookmarks) { updateBookmark(bookmarks[index], info.menuItemId) }
@@ -39,17 +37,11 @@ browser.menus.onShown.addListener(async (info) => {
                 return
             }
         } else {
-            const bookmarks = await browser.bookmarks.get(info.bookmarkId)
-            if (itemsExist) {
-                browser.menus.update("assign_container", {title: `Assign Container to ${bookmarks[0].type === "folder" ? "Bookmarks in Folder" : "Bookmark"}`})
-                browser.menus.update("assign_image", {title: `Assign Custom Image to ${bookmarks[0].type === "folder" ? "Bookmarks in Folder" : "Bookmark"}`})
-                browser.menus.update("remove_image", {title: `Remove Custom Image from ${bookmarks[0].type === "folder" ? "Bookmarks in Folder" : "Bookmark"}`})
-                browser.menus.refresh()
-            } else {
-                createMenuItems(bookmarks[0].type)
-                browser.menus.refresh()
-                itemsExist = true
-            }
+            const bookmarks = await browser.bookmarks.get(info.bookmarkId)        
+            browser.menus.removeAll()    
+            createMenuItems(bookmarks[0].type)
+            browser.menus.refresh()
+            itemsExist = true
         }
     }
 })
@@ -105,11 +97,13 @@ function createMenuItems(bookmarkType) {
         title: `Assign Container to ${bookmarkType === "folder" ? "Bookmarks in Folder" : "Bookmark"}`,
         contexts: ["bookmark"],
     })
-    browser.menus.create({
-        id: "assign_image",
-        title: `Assign Custom Image to ${bookmarkType === "folder" ? "Bookmarks in Folder" : "Bookmark"}`,
-        contexts: ["bookmark"],
-    })
+    if (bookmarkType != "folder") {
+        browser.menus.create({
+            id: "assign_image",
+            title: "Assign Custom Image to Bookmark",
+            contexts: ["bookmark"],
+        })
+    }
     browser.menus.create({
         id: "remove_image",
         title: `Remove Custom Image from ${bookmarkType === "folder" ? "Bookmarks in Folder" : "Bookmark"}`,
