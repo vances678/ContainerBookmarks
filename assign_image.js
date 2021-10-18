@@ -19,9 +19,9 @@ function assignImage() {
         data[bookmarkId] = url
         browser.storage.sync.set(data)
         reloadFavicon(bookmarkId, bookmarkURL)
-        title.innerHTML = "Image URL set! (you can close this window)"
+        title.textContent = "Image URL set! (you can close this window)"
     } else {
-        title.innerHTML = "Error retrieving bookmark id. Please try again."
+        title.textContent = "Error retrieving bookmark id. Please try again."
     }
 }
 
