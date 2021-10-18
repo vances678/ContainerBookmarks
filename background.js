@@ -40,7 +40,6 @@ browser.menus.onShown.addListener(async (info) => {
             const bookmarks = await browser.bookmarks.get(info.bookmarkId)        
             browser.menus.removeAll()    
             createMenuItems(bookmarks[0].type)
-            browser.menus.refresh()
             itemsExist = true
         }
     }
@@ -134,5 +133,6 @@ function createMenuItems(bookmarkType) {
                 parentId: "assign_container"
             })
         }
+        browser.menus.refresh()
     })
 }
