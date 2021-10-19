@@ -1,7 +1,7 @@
 {
     "name": "Container Bookmarks",
     "description": "Open bookmarks in multi-account containers",
-    "version": "1.4",
+    "version": "1.4.1",
     "manifest_version": 2,
 
     "author": "Vance Spears",
@@ -31,7 +31,5 @@
         "gecko": {
             "id": "{c4d1341f-2722-406d-a628-204a60159a1c}"
         }
-    },
-
-    "content_security_policy": "script-src 'self' https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js; object-src 'self'"
+    }
   }

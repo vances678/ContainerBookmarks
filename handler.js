@@ -35,15 +35,20 @@ function updateFavicon(params) {
             .then(async storedImageURL => { 
                 const hrefExists = await imageExists(href)
                 const altHrefExists = await imageExists(altHref)
+                const link = document.createElement("link")
+                link.rel = "icon"
                 if (storedImageURL[params.id]) {
                     console.log("using stored custom image")
-                    $("head").append(`<link rel="icon" href="${storedImageURL[params.id]}">`)
+                    link.href = storedImageURL[params.id]
+                    document.head.appendChild(link)
                 } else if (hrefExists) {
                     console.log("using origin/favicon.ico image")
-                    $("head").append(`<link rel="icon" href="${href}">`)
+                    link.href = href
+                    document.head.appendChild(link)
                 } else if (altHrefExists) {
                     console.log("using google favicon finder")
-                    $("head").append(`<link rel="icon" href="${altHref}">`)
+                    link.href = altHref
+                    document.head.appendChild(link)
                 } else {
                     console.log("unable to find favicon for bookmark")
                 }
@@ -76,7 +81,7 @@ async function openURL(params) {
 async function onStart() {
     const params = getParams()  // Get url parameters
     await updateFavicon(params) // Update head to match favicon of desired site
-    openURL(params)             // Call opener function
+    //openURL(params)             // Call opener function
 }
 
 onStart()
