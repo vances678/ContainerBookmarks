@@ -81,7 +81,7 @@ async function openURL(params) {
 async function onStart() {
     const params = getParams()  // Get url parameters
     await updateFavicon(params) // Update head to match favicon of desired site
-    //openURL(params)             // Call opener function
+    openURL(params)             // Call opener function
 }
 
 onStart()
